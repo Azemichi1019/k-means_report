@@ -1,23 +1,23 @@
-#検索技術
-#学期末課題レポート
+# 検索技術
+# 学期末課題レポート
 
 21X3007
 畔上達希
  
-##1. 目的
+## 1. 目的
  データの分析を行うことで、分類問題などを解決するための手法を学ぶ
 
-##2. 方法
-###2.1. データセット
+## 2. 方法
+### 2.1. データセット
  breast cancerデータセットを、k-means法を用いて分類する。
  breast cancerデータセットは、乳がんの有無を判別する単純な二値分類データセットであり、mean radius、mean texture、mean perimeter、mean area、mean smoothness、mean compactness、mean concavity、mean concave points、mean symmetry、mean fractal dimension、radius error、texture error、perimeter error、area error、smoothness error、compactness error、concavity error、concave points error、symmetry error、fractal dimension error、worst radius、worst texture、worst perimeter、worst area、worst smoothness、worst compactness、worst concavity、worst concave points、worst symmetry、worst fractal dimensionの乳房腫瘤の細針吸引 (FNA) のデジタル化された画像から計算された30パラメータをもった569個のデータを持つデータセットである。
  このデータセットを用いて、乳がん検査においての悪性、良性の判別を行う。
 
-###2.2. 手法
+### 2.2. 手法
  k-means法は、与えられた値の集合をランダムにk個のクラスタに分け、各クラスタの重心を計算、重心からの距離をそれぞれの要素で計算し、その要素に最も重心が近いクラスタに分類しなす。このようにして更新されたクラスタに関して重心を計算し、距離を計算、クラスタを更新することを繰り返すことでクラスタリングを行う。
  今回用いたbreast cancerデータセットは単純な二値分類を扱い、データのパラメータも多いことから、重心との距離が近いクラスタに分類するだけの単純なクラスタリング方法でも十分な識別が行えると考え、k-means法を選択した。
 
-###2.3. k-means法の実装
+### 2.3. k-means法の実装
  breast cancerデータセットに対して、k-means法による分類を行う。
  sklearn.datasetsからload_breast_cancerをインポートし、データセットを読み込んだ。
  読み込んだデータセットでpandasのデータフレームを作成した。データのtargetを、0ならmalignant(悪性)、1ならbenign(良性)とした。
@@ -27,12 +27,12 @@
  分類結果をデータのtargetと比較し、一致率を調べた。
  k-means法に用いるパラメータ数を1から30まで変化させたとき、パラメータ数を3として使用するパラメータを変更したときそれぞれの一致率を調べ、変化を観察した。パラメータを3に固定した時、パラメータは連番の3つを使用した。
  
-###2.4. 主成分分析を行ったk-means法
+### 2.4. 主成分分析を行ったk-means法
  k-means法の入力データに対し、主成分分析を行う。
  データに対して標準化を行い、sklearn.decompositionからインポートしたPCAを用いて主成分分析を行った。
  抽出された成分を用いて、2.3と同様にk-means法によるクラスタリングを行った。
  
-##3. 結果
+## 3. 結果
  データをmean radiusとmean textureの値を用いてグラフにプロットし、targetによって色を変更した結果を図１に示す。
 
  
@@ -78,7 +78,7 @@
 
 分類結果とデータのtargetの一致率は、約90.9%となった。
  
-##4. 考察
+## 4. 考察
  データをmean radiusとmean textureの値を用いてグラフにプロットし、targetによって色を変更した結果、それぞれの分布の境界部分は重なり合っていたが、データをmean radiusとmean textureの値を用いてグラフにプロットし、分類結果によって色を変更した結果、分類結果は重なり合わずに分布していた。また、分類結果とデータのtargetの一致率は、約83.3%となった。
  これは、k-means法は求められた重心からの距離で分類が行われ、これは分類の為に線形的な境界を設けることと等しいため、重なり合った部分を正確に分類できなかったと考えられる。
 
