@@ -35,7 +35,7 @@
 ## 3. 結果
  データをmean radiusとmean textureの値を用いてグラフにプロットし、targetによって色を変更した結果を図１に示す。
 
- 
+ ![image](https://github.com/Azemichi1019/k-means_report/assets/59964400/ad083eeb-2381-4980-b20c-c2d3b12dca3f)
 図１ mean radiusとmean texture上での良性と悪性の分布
 
  図１から、malignantとbenignの分布は明確に分かれているが、境界部分は重なり合っていた。
